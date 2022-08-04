@@ -9,23 +9,29 @@ const Obstacle = props => {
     const xBody = props.body.position.x - widthBody / 2
     const yBody = props.body.position.y - heightBody / 2
 
-    const color = props.color;
-
+    const borderBottom = props.body.label.indexOf('Bottom') === -1 ? 100 : 0
+    const borderTop = props.body.label.indexOf('Bottom') === -1 ? 0 : 100
     return (
         <View style={{
             borderWidth: 1,
-            borderColor: color,
+            borderColor: '#080807',
+            backgroundColor: '#7c6749',
             borderStyle: 'solid',
             position: 'absolute',
+            borderTopLeftRadius: borderTop, 
+            borderTopRightRadius: borderTop,
+            borderBottomLeftRadius: borderBottom, 
+            borderBottomRightRadius: borderBottom,
             left: xBody,
             top: yBody,
             width: widthBody,
             height: heightBody
-        }} />
+        }} >
+        </View>
     )
 }
 
-export default (world, label, color, pos, size) => {
+export default (world, label, pos, size) => {
     const initialObstacle = Matter.Bodies.rectangle(
         pos.x,
         pos.y,
@@ -40,7 +46,6 @@ export default (world, label, color, pos, size) => {
 
     return {
         body: initialObstacle,
-        color,
         pos,
         renderer: <Obstacle />
     }

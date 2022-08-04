@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Text style={{ textAlign: 'center', fontSize: 40, fontWeight: 'bold', margin: 20 }}>{currentPoints}</Text>
+      <Text style={{ textAlign: 'center', fontSize: 40, fontWeight: 'bold', margin: 20, zIndex:1 }}>{currentPoints}</Text>
       <GameEngine
         ref={(ref) => { setGameEngine(ref) }}
         systems={[Physics]}
@@ -39,7 +39,8 @@ export default function App() {
           top: 0,
           left: 0,
           right: 0,
-          bottom: 0
+          bottom: 0,
+          background:require('./assets/caverna_fundo.jpg')
         }} >
 
         <StatusBar style="auto" hidden={true} />
